@@ -6,9 +6,9 @@ class ProductManager {
         this.products = [];
     }
     //la clase "ProductManager" tiene un método "addProduct" que agrega un producto al arreglo de productos inicial. 
-    //Se valida que no se repita el campo "code" y que todos los campos sean obligatorios. Al agregar un producto, 
-    //se crea con un id autoincrementable. Además, la clase tiene un método "getProducts" que devuelve el arreglo 
-    //con todos los productos creados hasta ese momento.
+    //Se valida que no se repita el campo "code" y que todos los campos sean obligatorios. 
+    //Al agregar un producto, se crea con un id autoincrementable. 
+    //Además, la clase tiene un método "getProducts" que devuelve el arreglo con todos los productos creados hasta ese momento.
 
     addProduct(title, description, price, thumbnail, code, stock) {
 
@@ -59,11 +59,16 @@ const productManager = new ProductManager();
 
 productManager.addProduct("Producto 1", "Descripción del producto 1", 100, "imagen1.jpg", "P001", 50);
 productManager.addProduct("Producto 2", "Descripción del producto 2", 150, "imagen2.jpg", "P002", 30);
+productManager.addProduct("Producto 3", "Descripción del producto 3", 200,"imagen3.jpg", "P003", 40);
+
 
 console.log(productManager.getProducts());
 
-console.log(productManager.getProductById(2)); // Output: { id: 1, title: "Producto 1", 
+console.log(productManager.getProductById(1)); // Output: { id: 1, title: "Producto 1", 
                                                //description: "Descripción del producto 1", price: 100
                                                //thumbnail: "imagen1.jpg", code: "P001", stock: 50 }
 
-console.log(productManager.getProductById(3)); // Output: "Not found"
+console.log(productManager.getProductById(3)); //En el caso de no poner un valor daria 
+                                              //Error: Todos los campos son obligatorios 
+
+console.log(productManager.getProductById(4)); // Output: "Not found"
