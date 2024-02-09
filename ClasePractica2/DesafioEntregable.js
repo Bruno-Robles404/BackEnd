@@ -1,6 +1,9 @@
+const fs = require('fs');
+
+
+
 
 //Realizar una clase “ProductManager” que gestione un conjunto de productos.
-
 class ProductManager {
     constructor() {
         this.products = [];
@@ -18,13 +21,16 @@ class ProductManager {
         }
 
         // Validar que no se repita el campo "code"
-        const existingProduct = this.products.find(product => product.code === code);
+        let existingProduct = this.products.find(product => product.code === code);
         if (existingProduct) {
             throw new Error("El código ya está repetido");
         }
 
         // Crear un id autoincrementable
-        const id = this.products.length + 1;
+        let id = 1
+        if (this.products.length > 0) {
+            id.this.products[this.products.length - 1].id + 1
+        }
 
         // Crear el objeto del producto
         const product = {
@@ -49,7 +55,7 @@ class ProductManager {
     getProductById(id) {
         const product = this.products.find(product => product.id === id);
         if (!product) {
-            console.error("Not found");
+            return "Not found";
         }
         return product;
     }
@@ -59,16 +65,17 @@ const productManager = new ProductManager();
 
 productManager.addProduct("Producto 1", "Descripción del producto 1", 100, "imagen1.jpg", "P001", 50);
 productManager.addProduct("Producto 2", "Descripción del producto 2", 150, "imagen2.jpg", "P002", 30);
-productManager.addProduct("Producto 3", "Descripción del producto 3", 200,"imagen3.jpg", "P003", 40);
+productManager.addProduct("Producto 3", "Descripción del producto 3", 200, "imagen3.jpg", "P003", 40);
 
 
 console.log(productManager.getProducts());
 
 console.log(productManager.getProductById(1)); // Output: { id: 1, title: "Producto 1", 
-                                               //description: "Descripción del producto 1", price: 100
-                                               //thumbnail: "imagen1.jpg", code: "P001", stock: 50 }
+//description: "Descripción del producto 1", price: 100
+//thumbnail: "imagen1.jpg", code: "P001", stock: 50 }
 
 console.log(productManager.getProductById(3)); //En el caso de no poner un valor daria 
-                                              //Error: Todos los campos son obligatorios 
+//Error: Todos los campos son obligatorios 
 
 console.log(productManager.getProductById(4)); // Output: "Not found"
+
