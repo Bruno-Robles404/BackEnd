@@ -62,7 +62,6 @@ class ProductManager {
         let modifyProduct = [{...producto, id}, ...previousProduct];
         await fs.promises.writeFile(this.path, JSON.stringify(modifyProduct));
     };
-
 }
 
 
