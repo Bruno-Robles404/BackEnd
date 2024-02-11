@@ -1,0 +1,1 @@
+[{"title":"nike","description":"zapatillas","price":"7000","thumbnail":"imagen02","code":"nike002","stock":"5","id":2}]
