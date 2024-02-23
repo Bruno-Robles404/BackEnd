@@ -5,7 +5,7 @@ import ProductManager from "./components/ProductManager.js"
 const app = express()
 app.use(express.urlencoded({ extended: true }));
 
-
+const manager = new ProductManager();
 const products = new ProductManager();
 const readProducts = products.readFile();
 
@@ -22,9 +22,8 @@ app.get("/products", async (req, res) => {
 
 app.get("/products/:id", async (req, res) => {
     let id = parseInt (req.params.id);
+    let (productsById= await manager.getProductsById(id);
 
-    let allProducts = await readProducts;
-    let productsById =allProducts.find(product=> product.id === id)
     if(productsById){
          res.send(productsById)
     }else {
