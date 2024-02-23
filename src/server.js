@@ -22,7 +22,7 @@ app.get("/products", async (req, res) => {
 
 app.get("/products/:id", async (req, res) => {
     let id = parseInt (req.params.id);
-    let (productsById= await manager.getProductsById(id);
+    let productsById = await manager.getProductsById(id);
 
     if(productsById){
          res.send(productsById)
